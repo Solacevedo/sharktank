@@ -1,0 +1,213 @@
+@import "tailwindcss";
+@source "../src";
+
+/*
+ * Repositorio de KPIs — Tiendanube dark design system.
+ * All colors live here as semantic tokens; components never hardcode colors.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-mid: var(--brand-mid);
+  --color-brand-dark: var(--brand-dark);
+  --color-cyan: var(--cyan);
+  --color-yellow: var(--yellow);
+  --color-dim: var(--dim);
+  --color-hairline: var(--hairline);
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.15 0.06 265);
+  --foreground: oklch(0.98 0.005 250);
+  --card: oklch(0.24 0.05 265);
+  --card-foreground: oklch(0.98 0.005 250);
+  --popover: oklch(0.2 0.05 265);
+  --popover-foreground: oklch(0.98 0.005 250);
+  --primary: #0050c3;
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.28 0.05 265);
+  --secondary-foreground: oklch(0.98 0.005 250);
+  --muted: oklch(0.26 0.045 265);
+  --muted-foreground: #9fb3d1;
+  --accent: #59a9ff;
+  --accent-foreground: #010b23;
+  --destructive: oklch(0.63 0.2 22);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: rgba(89, 169, 255, 0.22);
+  --input: rgba(89, 169, 255, 0.22);
+  --ring: #59a9ff;
+
+  --brand: #0050c3;
+  --brand-mid: #00298f;
+  --brand-dark: #080558;
+  --cyan: #59a9ff;
+  --yellow: #ffd166;
+  --dim: #9fb3d1;
+  --hairline: rgba(89, 169, 255, 0.16);
+
+  --gradient-hero: linear-gradient(
+    90deg,
+    #0050c3 0%,
+    #00298f 35%,
+    #080558 70%,
+    #010b23 100%
+  );
+  --surface-card: rgba(255, 255, 255, 0.05);
+  --surface-card-hover: rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    background-color: #010b23;
+  }
+
+  body {
+    background-color: #010b23;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@utility hero-band {
+  background: var(--gradient-hero);
+}
+
+@utility board-card {
+  background: var(--surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+}
+
+@utility badge-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  white-space: nowrap;
+}
+
+@utility badge-cyan {
+  background: rgba(89, 169, 255, 0.14);
+  border: 1px solid rgba(89, 169, 255, 0.35);
+  color: var(--color-cyan);
+}
+
+@utility badge-yellow {
+  background: rgba(255, 209, 102, 0.14);
+  border: 1px solid rgba(255, 209, 102, 0.35);
+  color: var(--color-yellow);
+}
+
+@utility callout-cyan {
+  background: rgba(89, 169, 255, 0.08);
+  border: 1px solid rgba(89, 169, 255, 0.28);
+  border-radius: 14px;
+}
+
+@utility callout-yellow {
+  background: rgba(255, 209, 102, 0.08);
+  border: 1px solid rgba(255, 209, 102, 0.3);
+  border-radius: 14px;
+}
+
+@utility editable {
+  border-radius: 6px;
+  outline: none;
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+  cursor: text;
+
+  &:hover {
+    background-color: rgba(89, 169, 255, 0.08);
+  }
+
+  &:focus {
+    background-color: rgba(89, 169, 255, 0.1);
+    box-shadow: 0 0 0 2px rgba(89, 169, 255, 0.55);
+  }
+}
+
+@utility ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  border: 1px dashed rgba(89, 169, 255, 0.4);
+  padding: 0.3rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-cyan);
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    background-color: rgba(89, 169, 255, 0.12);
+    border-color: rgba(89, 169, 255, 0.7);
+  }
+}
+
+@utility team-select {
+  appearance: none;
+  border-radius: 999px;
+  border: 1px solid rgba(89, 169, 255, 0.35);
+  background-color: rgba(89, 169, 255, 0.1);
+  color: var(--color-cyan);
+  padding: 0.2rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background-color: rgba(89, 169, 255, 0.18);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(89, 169, 255, 0.55);
+  }
+
+  & option {
+    background-color: #080558;
+    color: #ffffff;
+    text-transform: none;
+  }
+}
